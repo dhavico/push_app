@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710140918969",
+    "project_id": "flutter-projects-cc236",
+    "storage_bucket": "flutter-projects-cc236.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710140918969:android:008eb53efffd3af5cf2f68",
+        "android_client_info": {
+          "package_name": "com.davidortega.push_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyMiZKb1zxLS98e4gfCB_bYXxaSpnq_vU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

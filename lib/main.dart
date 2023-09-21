@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:push_app/config/local_notifications/local_notification.dart';
 import 'package:push_app/config/router/app_router.dart';
 
 import 'package:push_app/config/theme/app_theme.dart';
@@ -9,11 +10,17 @@ import 'package:push_app/presentation/blocs/notifications/notifications_bloc.dar
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  await NotificationsBloc.initializeFCM();
 
-  runApp(MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => NotificationsBloc())],
-      child: const MainApp()));
+  await NotificationsBloc.initializeFCM();
+  await LocalNotifications.initializeLocalNotifications();
+
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(
+        create: (_) => NotificationsBloc(
+            requestLocalNotificationPermissions:
+                LocalNotifications.requestPermissionLocalNotification,
+            showLocalNotification: LocalNotifications.showLocalNotification))
+  ], child: const MainApp()));
 }
 
 class MainApp extends StatelessWidget {
